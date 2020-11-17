@@ -8,14 +8,9 @@
 import SwiftUI
 
 struct dayView: View {
-    
+    var date: CalendarView<Text>
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        date
     }
 }
 
-struct dayView_Previews: PreviewProvider {
-    static var previews: some View {
-        dayView()
-    }
-}

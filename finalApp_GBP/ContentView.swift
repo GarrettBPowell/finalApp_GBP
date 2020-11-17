@@ -49,6 +49,28 @@ fileprivate extension Calendar {
     }
 }
 
+//DAY VIEW
+struct DayView: View {
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
+  var date: Date
+    
+  var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    return formatter
+  }
+    
+  var body: some View {
+    VStack {
+      Text(self.dateFormatter.string(from: self.date))
+      Button("Close") {
+        self.presentationMode.wrappedValue.dismiss()
+      }
+    }
+  }
+}
+
 //WEEK VIEW
 struct WeekView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
@@ -170,34 +192,47 @@ struct CalendarView<DateView>: View where DateView: View {
 
 struct RootView: View {
     @Environment(\.calendar) var calendar
+    @State var showingDayView = false
+    @State var components = DateComponents()
+    @State var desiredDate = Date()
 
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: Date())!
     }
     
-
     var body: some View {
+        
         NavigationView {
             VStack {
-                NavigationLink(destination: dayView()) {
-                    CalendarView(interval: year) { date in
-                        Text("30")
-                            .hidden()
-                            .padding(8)
-                            .background(Color.red)
-                            .clipShape(Circle())
-                            .padding(.vertical, 4)
-                            .overlay(
-                                Text(String(self.calendar.component(.day, from: date)))
-                                    .foregroundColor(Color.black)
-                            )
-                    }
-                }
+                
+            CalendarView(interval: year) { date in
+                //keeps size the same
+                Text("30")
+                    .hidden()
+                    .padding(8)
+                    .background(Color.red)
+                    .clipShape(Circle())
+                    .padding(.vertical, 4)
+                    
+                    .overlay(
+                    VStack{
+                      Text(String(self.calendar.component(.day, from: date)))
+                        .foregroundColor(Color.white)
+                    }.onTapGesture {
+                            self.showingDayView.toggle()
+                            
+                        self.components.month = self.calendar.component(.month, from: date)
+                        self.components.day = self.calendar.component(.day, from: date)
+                        self.components.year = self.calendar.component(.year, from: date)
+                     
+                        }.sheet(isPresented: self.$showingDayView) {
+                          DayView(date: self.calendar.date(from: self.components) ?? Date())
+                        }
+                )}
             }
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
