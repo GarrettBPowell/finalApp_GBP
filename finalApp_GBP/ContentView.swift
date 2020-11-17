@@ -49,6 +49,7 @@ fileprivate extension Calendar {
     }
 }
 
+//WEEK VIEW
 struct WeekView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
 
@@ -74,6 +75,7 @@ struct WeekView<DateView>: View where DateView: View {
         HStack {
             ForEach(days, id: \.self) { date in
                 HStack {
+                    
                     if self.calendar.isDate(self.week, equalTo: date, toGranularity: .month) {
                         self.content(date)
                     } else {
@@ -85,6 +87,7 @@ struct WeekView<DateView>: View where DateView: View {
     }
 }
 
+//MONTH VIEW
 struct MonthView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
 
@@ -133,6 +136,7 @@ struct MonthView<DateView>: View where DateView: View {
     }
 }
 
+//CALENDAR VIEW
 struct CalendarView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
 
@@ -164,37 +168,41 @@ struct CalendarView<DateView>: View where DateView: View {
 
 
 
-struct ContentView: View {
+struct RootView: View {
     @Environment(\.calendar) var calendar
-    
+
     private var year: DateInterval {
-       calendar.dateInterval(of: .year, for: Date())!
-     }
+        calendar.dateInterval(of: .year, for: Date())!
+    }
     
-    
+
     var body: some View {
         NavigationView {
-                    VStack {
-                        Text("Hello World")
-                        NavigationLink(destination: dayView()) {
-                            Text("Go To Next Step")
-                        }
+            VStack {
+                NavigationLink(destination: dayView()) {
+                    CalendarView(interval: year) { date in
+                        Text("30")
+                            .hidden()
+                            .padding(8)
+                            .background(Color.red)
+                            .clipShape(Circle())
+                            .padding(.vertical, 4)
+                            .overlay(
+                                Text(String(self.calendar.component(.day, from: date)))
+                                    .foregroundColor(Color.black)
+                            )
                     }
                 }
-        CalendarView(interval: year) {date in
-          Text(String(self.calendar.component(.day, from: date)))
-            .frame(width: 40, height: 40, alignment: .center)
-            .background(Color.red)
-            .clipShape(Circle())
-            .padding(.vertical, 4)
-           
+            }
         }
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RootView()
     }
 }
+
 
