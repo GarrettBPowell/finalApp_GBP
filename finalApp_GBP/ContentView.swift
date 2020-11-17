@@ -106,6 +106,7 @@ struct WeekView<DateView>: View where DateView: View {
                 }
             }
         }
+        
     }
 }
 
@@ -149,12 +150,14 @@ struct MonthView<DateView>: View where DateView: View {
         VStack {
             if showHeader {
                 header
+                    .foregroundColor(Color.white)
             }
 
             ForEach(weeks, id: \.self) { week in
                 WeekView(week: week, content: self.content)
             }
         }
+        
     }
 }
 
@@ -178,10 +181,14 @@ struct CalendarView<DateView>: View where DateView: View {
     }
 
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                ForEach(months, id: \.self) { month in
-                    MonthView(month: month, content: self.content)
+        ZStack{
+            Color.black
+                .edgesIgnoringSafeArea(.all)
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    ForEach(months, id: \.self) { month in
+                        MonthView(month: month, content: self.content)
+                    }
                 }
             }
         }
@@ -201,35 +208,39 @@ struct RootView: View {
     }
     
     var body: some View {
-        
-        NavigationView {
-            VStack {
-                
-            CalendarView(interval: year) { date in
-                //keeps size the same
-                Text("30")
-                    .hidden()
-                    .padding(8)
-                    .background(Color.red)
-                    .clipShape(Circle())
-                    .padding(.vertical, 4)
+        ZStack{
+            Color.black
+                .edgesIgnoringSafeArea(.all)
+            NavigationView {
+                VStack {
                     
-                    .overlay(
-                    VStack{
-                      Text(String(self.calendar.component(.day, from: date)))
-                        .foregroundColor(Color.white)
-                    }.onTapGesture {
-                            self.showingDayView.toggle()
-                            
-                        self.components.month = self.calendar.component(.month, from: date)
-                        self.components.day = self.calendar.component(.day, from: date)
-                        self.components.year = self.calendar.component(.year, from: date)
-                     
-                        }.sheet(isPresented: self.$showingDayView) {
-                          DayView(date: self.calendar.date(from: self.components) ?? Date())
-                        }
-                )}
+                CalendarView(interval: year) { date in
+                    //keeps size the same
+                    Text("30")
+                        .hidden()
+                        .padding(8)
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                        .padding(.vertical, 4)
+                        
+                        .overlay(
+                        VStack{
+                          Text(String(self.calendar.component(.day, from: date)))
+                            .foregroundColor(Color.white)
+                        }.onTapGesture {
+                                self.showingDayView.toggle()
+                                
+                            self.components.month = self.calendar.component(.month, from: date)
+                            self.components.day = self.calendar.component(.day, from: date)
+                            self.components.year = self.calendar.component(.year, from: date)
+                         
+                            }.sheet(isPresented: self.$showingDayView) {
+                              DayView(date: self.calendar.date(from: self.components) ?? Date())
+                            }
+                    )}
+                }
             }
+            
         }
     }
 }
