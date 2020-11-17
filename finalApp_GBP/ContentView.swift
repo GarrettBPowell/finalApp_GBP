@@ -207,13 +207,16 @@ struct RootView: View {
         calendar.dateInterval(of: .year, for: Date())!
     }
     
+    private var month: DateInterval {
+        calendar.dateInterval(of: .day, for: Date())!
+    }
+    
     var body: some View {
         ZStack{
             Color.black
                 .edgesIgnoringSafeArea(.all)
             NavigationView {
                 VStack {
-                    
                 CalendarView(interval: year) { date in
                     //keeps size the same
                     Text("30")
@@ -240,7 +243,6 @@ struct RootView: View {
                     )}
                 }
             }
-            
         }
     }
 }
