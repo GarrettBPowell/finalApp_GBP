@@ -9,7 +9,9 @@ import SwiftUI
 import UIKit
 import CoreLocation
 
-
+//
+//JSON READING STUFF
+//
 private func readLocalFile(forName name: String) -> Data? {
     do {
         if let bundlePath = Bundle.main.path(forResource: name,
@@ -52,6 +54,9 @@ private func loadJson(fromURLString urlString: String,
         urlSession.resume()
     }
 }
+//
+//
+//
 
 
 //darte formatters
