@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-class DateModel: Codable, Identifiable {
-    var dateContent: [DateContent]
+struct DateModel: Codable {
+    let dateContent: [DateContent]
 }
 
-class DateContent: Codable {
+struct DateContent: Codable {
     let actualDate: String
     let name: String
     let startTime: String

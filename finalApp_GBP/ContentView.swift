@@ -6,6 +6,53 @@
 //
 
 import SwiftUI
+import UIKit
+import CoreLocation
+
+
+private func readLocalFile(forName name: String) -> Data? {
+    do {
+        if let bundlePath = Bundle.main.path(forResource: name,
+                                             ofType: "json"),
+            let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+            return jsonData
+        }
+    } catch {
+        print(error)
+    }
+    
+    return nil
+}
+
+private func parse(jsonData: Data) {
+    do {
+        let dateStuff = try JSONDecoder().decode(DateModel.self,
+                                                   from: jsonData)
+        
+        print("Title: ", dateStuff.dateContent[0].actualDate)
+        print("Description: ", dateStuff.dateContent[0].name)
+        print("===================================")
+    } catch {
+        print("decode error")
+    }
+}
+private func loadJson(fromURLString urlString: String,
+                      completion: @escaping (Result<Data, Error>) -> Void) {
+    if let url = URL(string: urlString) {
+        let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            if let data = data {
+                completion(.success(data))
+            }
+        }
+        
+        urlSession.resume()
+    }
+}
+
 
 //darte formatters
 fileprivate extension DateFormatter {
@@ -66,10 +113,9 @@ struct DayView: View {
     //and display it 
     var findDate: String {
 
-        for item in dateData {
-            if item.actualDate == self.dateFormatter.string(from: self.date){
-                return item.actualDate}
-           }
+        if let localData = readLocalFile(forName: "dateData") {
+            parse(jsonData: localData)
+        }
        
         return "hello"
         }
@@ -213,13 +259,15 @@ struct CalendarView<DateView>: View where DateView: View {
 }
 
 
-
 struct RootView: View {
     @Environment(\.calendar) var calendar
     @State var showingDayView = false
     @State var components = DateComponents()
     @State var desiredDate = Date()
 
+    
+   
+    
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: Date())!
     }
