@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import CoreLocation
 
-let dateContent: [DateContent] = load("dateData.json")
+let dateData: [DateData] = load("dateData.json")
 
 
 func load<T: Decodable>(_ filename: String) -> T {

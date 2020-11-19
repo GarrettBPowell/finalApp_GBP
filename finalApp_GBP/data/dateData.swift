@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class dateData: Codable {
+class DateData: Codable {
     var actualDate: String
     var dateContent: [DateContent]
 }

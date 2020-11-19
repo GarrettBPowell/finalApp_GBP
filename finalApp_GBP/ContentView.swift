@@ -56,14 +56,28 @@ struct DayView: View {
   var date: Date
     
   var dateFormatter: DateFormatter {
+    
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
     return formatter
   }
     
+    var findDate: String {
+
+        for item in dateData {
+            if item.actualDate == self.dateFormatter.string(from: self.date){
+                return item.actualDate}
+           }
+       
+        return ""
+        }
+        
+    
+    
   var body: some View {
     VStack {
       Text(self.dateFormatter.string(from: self.date))
+        Text(self.findDate)
         
       Button("Close") {
         self.presentationMode.wrappedValue.dismiss()
