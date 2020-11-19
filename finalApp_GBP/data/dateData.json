@@ -1,20 +1,19 @@
-[
-    {
-        "actualDate": "1/1/01",
-        "dateContent": {
+[{
+
+    "dateContent": [{
+            "actualDate": "1/1/01",
             "name": "Fun thing",
             "startTime": "8",
             "endTime": "9",
             "description": "yayy"
-        }
-    },
-    {
-        "actualDate": "1/2/01",
-        "dateContent": {
-            "name": " thing",
+        },
+
+        {
+            "actualDate": "1/2/01",
+            "name": "thing",
             "startTime": "2",
             "endTime": "3",
             "description": "ya"
-    }
-]
-
+        }
+    ]
+}]

@@ -15,7 +15,6 @@
 		46719570255D815200781856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4671956F255D815200781856 /* Assets.xcassets */; };
 		46719573255D815200781856 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46719572255D815200781856 /* Preview Assets.xcassets */; };
 		4671957E255D815300781856 /* finalApp_GBPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671957D255D815300781856 /* finalApp_GBPTests.swift */; };
-		46719589255D815300781856 /* finalApp_GBPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46719588255D815300781856 /* finalApp_GBPUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +48,6 @@
 		4671957D255D815300781856 /* finalApp_GBPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalApp_GBPTests.swift; sourceTree = "<group>"; };
 		4671957F255D815300781856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46719584255D815300781856 /* finalApp_GBPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = finalApp_GBPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		46719588255D815300781856 /* finalApp_GBPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalApp_GBPUITests.swift; sourceTree = "<group>"; };
-		4671958A255D815300781856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +90,6 @@
 			children = (
 				4671956A255D814F00781856 /* finalApp_GBP */,
 				4671957C255D815300781856 /* finalApp_GBPTests */,
-				46719587255D815300781856 /* finalApp_GBPUITests */,
 				46719569255D814F00781856 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,15 +132,6 @@
 				4671957F255D815300781856 /* Info.plist */,
 			);
 			path = finalApp_GBPTests;
-			sourceTree = "<group>";
-		};
-		46719587255D815300781856 /* finalApp_GBPUITests */ = {
-			isa = PBXGroup;
-			children = (
-				46719588255D815300781856 /* finalApp_GBPUITests.swift */,
-				4671958A255D815300781856 /* Info.plist */,
-			);
-			path = finalApp_GBPUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +283,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46719589255D815300781856 /* finalApp_GBPUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,10 +58,12 @@ struct DayView: View {
   var dateFormatter: DateFormatter {
     
     let formatter = DateFormatter()
-    formatter.dateStyle = .medium
+    formatter.dateStyle = .short
     return formatter
   }
     
+    //this will check and see if anything has been assigned to a certain date and then return the data
+    //and display it 
     var findDate: String {
 
         for item in dateData {
@@ -69,7 +71,7 @@ struct DayView: View {
                 return item.actualDate}
            }
        
-        return ""
+        return "hello"
         }
         
     
