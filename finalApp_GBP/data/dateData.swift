@@ -13,6 +13,10 @@ struct DateModel: Codable {
 
 struct DateContent: Codable {
     let actualDate: String
+    let specificContent: [SpecificContent]
+}
+
+struct SpecificContent: Codable {
     let name: String
     let startTime: String
     let endTime: String?

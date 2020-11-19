@@ -26,17 +26,30 @@ private func readLocalFile(forName name: String) -> Data? {
     return nil
 }
 
-private func parse(jsonData: Data) {
+private func parse(jsonData: Data, date: String) -> String {
     do {
         let dateStuff = try JSONDecoder().decode(DateModel.self,
                                                    from: jsonData)
-        
+        for item in dateStuff.dateContent {
+            print("Thing: ", item.actualDate, " ", date)
+            if item.actualDate == date
+            {
+                print("Thing: ", item.actualDate)
+                var stringThing = ""
+                for contents in item.specificContent {
+                    //come up with actual return formatting
+                    stringThing += contents.name
+                }
+                return "it is working: " + stringThing
+            }
+        }
         print("Title: ", dateStuff.dateContent[0].actualDate)
-        print("Description: ", dateStuff.dateContent[0].name)
+        print("Description: ", dateStuff.dateContent[0].actualDate)
         print("===================================")
     } catch {
         print("decode error")
     }
+    return ""
 }
 private func loadJson(fromURLString urlString: String,
                       completion: @escaping (Result<Data, Error>) -> Void) {
@@ -119,10 +132,10 @@ struct DayView: View {
     var findDate: String {
 
         if let localData = readLocalFile(forName: "dateData") {
-            parse(jsonData: localData)
+            return parse(jsonData: localData, date: self.dateFormatter.string(from: self.date))
         }
        
-        return "hello"
+        return ""
         }
         
     
