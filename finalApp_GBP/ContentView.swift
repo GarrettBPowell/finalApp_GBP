@@ -57,13 +57,14 @@ struct DayView: View {
     
   var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
-    formatter.dateStyle = .short
+    formatter.dateStyle = .medium
     return formatter
   }
     
   var body: some View {
     VStack {
       Text(self.dateFormatter.string(from: self.date))
+        
       Button("Close") {
         self.presentationMode.wrappedValue.dismiss()
       }
