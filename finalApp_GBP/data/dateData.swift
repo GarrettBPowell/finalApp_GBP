@@ -19,7 +19,7 @@ struct DateContent: Codable {
 struct SpecificContent: Codable {
     let name: String
     let startTime: String
-    let endTime: String?
+    let endTime: String
     let description: String?
 }
 

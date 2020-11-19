@@ -30,27 +30,25 @@ private func parse(jsonData: Data, date: String) -> String {
     do {
         let dateStuff = try JSONDecoder().decode(DateModel.self,
                                                    from: jsonData)
+        var thisString = ""
         for item in dateStuff.dateContent {
-            print("Thing: ", item.actualDate, " ", date)
             if item.actualDate == date
             {
-                print("Thing: ", item.actualDate)
-                var stringThing = ""
-                for contents in item.specificContent {
-                    //come up with actual return formatting
-                    stringThing += contents.name
-                }
-                return "it is working: " + stringThing
+
+                 for theData in item.specificContent
+                 {
+                    thisString += " \(theData.name) \("\n    Start") \(theData.startTime) \(" - ") \(theData.endTime) \("\n")"
+                    
+                 }
             }
         }
-        print("Title: ", dateStuff.dateContent[0].actualDate)
-        print("Description: ", dateStuff.dateContent[0].actualDate)
-        print("===================================")
+        return thisString
     } catch {
         print("decode error")
     }
     return ""
 }
+
 private func loadJson(fromURLString urlString: String,
                       completion: @escaping (Result<Data, Error>) -> Void) {
     if let url = URL(string: urlString) {
@@ -128,22 +126,16 @@ struct DayView: View {
   }
     
     //this will check and see if anything has been assigned to a certain date and then return the data
-    //and display it 
-    var findDate: String {
-
-        if let localData = readLocalFile(forName: "dateData") {
-            return parse(jsonData: localData, date: self.dateFormatter.string(from: self.date))
-        }
-       
-        return ""
-        }
-        
+    //and display it
     
     
   var body: some View {
     VStack {
       Text(self.dateFormatter.string(from: self.date))
-        Text(self.findDate)
+        
+        if let localData = readLocalFile(forName: "dateData") {
+            Text( parse(jsonData: localData, date: self.dateFormatter.string(from: self.date)))
+        }
         
       Button("Close") {
         self.presentationMode.wrappedValue.dismiss()
