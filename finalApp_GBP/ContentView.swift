@@ -69,13 +69,12 @@ struct DayView: View {
   var body: some View {
     VStack {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
+        
         ScrollView {
-            Text(dateData[0].specificContent[0].name)
             dayView(items: dateData[0].specificContent)
-        }.frame(width:400, height:700)
-          Button("Close") {
+        }
+        Button("Close") {
             self.presentationMode.wrappedValue.dismiss()
-          
         }
     }
   }

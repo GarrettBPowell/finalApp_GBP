@@ -15,13 +15,23 @@ struct dayView: View {
     var body: some View {
         VStack(alignment: .leading) {
 
-            ScrollView(.horizontal, showsIndicators: false) {
+            List(0..<5) { item in
                 VStack{
-                    Text("\(items[0].startTime) \(" - ") \(items[0].endTime) ")
+                    Text(items[0].name).font(.title2)
+                    Spacer()
+                    HStack{
+                        Text("\(items[0].startTime) \(" - ") \(items[0].endTime) ")
+                    
+                   Spacer()
                     Text(items[0].description ?? "")
+                    }
                 }
             }
-            .frame(height: 185)
+            .frame(height: 300)
+            Spacer()
+            Spacer()
+            Spacer()
+            Text("Hopefully have time density graph here or a button to get to it")
         }
     }
 }
