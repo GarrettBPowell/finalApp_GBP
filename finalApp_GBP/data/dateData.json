@@ -3,10 +3,34 @@
     "dateContent": [{
             "actualDate": "1/1/20",
             "specificContent": [{
-                "name": "Fun thing",
+                "name": "The ACU Honors College dinner and award ceramony",
                 "startTime": "8",
                 "endTime": "9",
-                "description": "yayy"
+                "description": "It is at the ACU Hunter Welcome Center (park around front)"
+            },
+            {
+                "name": "Exciting Thing",
+                "startTime": "7:30",
+                "endTime": "9:20",
+                "description": "it's exciting"
+            },
+            {
+                "name": "Exciting Thing",
+                "startTime": "7:30",
+                "endTime": "9:20",
+                "description": "it's exciting"
+            },
+            {
+                "name": "Exciting Thing",
+                "startTime": "7:30",
+                "endTime": "9:20",
+                "description": "it's exciting"
+            },
+            {
+                "name": "Exciting Thing",
+                "startTime": "7:30",
+                "endTime": "9:20",
+                "description": "it's exciting"
             },
             {
                 "name": "Exciting Thing",

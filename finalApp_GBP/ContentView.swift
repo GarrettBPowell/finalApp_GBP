@@ -26,27 +26,21 @@ private func readLocalFile(forName name: String) -> Data? {
     return nil
 }
 
-private func parse(jsonData: Data, date: String) -> String {
+private func parse(jsonData: Data, date: String) -> DateContent {
     do {
         let dateStuff = try JSONDecoder().decode(DateModel.self,
                                                    from: jsonData)
-        var thisString = ""
         for item in dateStuff.dateContent {
             if item.actualDate == date
             {
-
-                 for theData in item.specificContent
-                 {
-                    thisString += " \(theData.name) \("\n    Start") \(theData.startTime) \(" - ") \(theData.endTime) \("\n")"
-                    
-                 }
+                return item
             }
         }
-        return thisString
     } catch {
         print("decode error")
     }
-    return ""
+    let blankContent: DateContent
+    return blankContent
 }
 
 private func loadJson(fromURLString urlString: String,
@@ -127,19 +121,35 @@ struct DayView: View {
     
     //this will check and see if anything has been assigned to a certain date and then return the data
     //and display it
-    
+    var getContentOfDate: DateContent {
+        if let localData = readLocalFile(forName: "dateData") {
+            return parse(jsonData: localData, date: self.dateFormatter.string(from: self.date))
+        }
+        let blankContent: DateContent
+    return blankContent
+    }
     
   var body: some View {
     VStack {
-      Text(self.dateFormatter.string(from: self.date))
-        
-        if let localData = readLocalFile(forName: "dateData") {
-            Text( parse(jsonData: localData, date: self.dateFormatter.string(from: self.date)))
+        Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
+        ScrollView {
+            HStack {
+                VStack {
+                    ForEach(self.getContentOfDate, id: \.self) { stuff in
+                        VStack{
+                            Text(stuff.name)
+                            Text("\(stuff.startTime) \(" - ") \(stuff.endTime)")
+                            Text(stuff.description)
+                        }
+                    }
+                }
+                Spacer()
+            }
+        }.frame(width:400, height:700)
+          Button("Close") {
+            self.presentationMode.wrappedValue.dismiss()
+          
         }
-        
-      Button("Close") {
-        self.presentationMode.wrappedValue.dismiss()
-      }
     }
   }
 }

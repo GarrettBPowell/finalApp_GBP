@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct DateModel: Codable {
-    let dateContent: [DateContent]
+    var dateContent: [DateContent]
 }
 
 struct DateContent: Codable {
-    let actualDate: String
-    let specificContent: [SpecificContent]
+    var actualDate: String
+    var specificContent: [SpecificContent]
 }
 
 struct SpecificContent: Codable {
-    let name: String
-    let startTime: String
-    let endTime: String
-    let description: String?
+    var name: String
+    var startTime: String
+    var endTime: String
+    var description: String?
 }
 
