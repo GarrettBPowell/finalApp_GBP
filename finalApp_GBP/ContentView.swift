@@ -135,6 +135,7 @@ struct DayView: View {
         ScrollView {
             HStack {
                 VStack {
+                //This is what isn't working right now
                     ForEach(self.getContentOfDate, id: \.self) { stuff in
                         VStack{
                             Text(stuff.name)
