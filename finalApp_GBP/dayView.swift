@@ -15,6 +15,7 @@ struct dayView: View {
     var body: some View {
         VStack(alignment: .leading) {
 
+        
             List(0..<5) { item in
                 VStack{
                     Text(items[0].name).font(.title2)
