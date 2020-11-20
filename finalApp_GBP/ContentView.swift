@@ -65,6 +65,12 @@ struct DayView: View {
     return formatter
   }
     
+    var categories: [String: [DateModel]] {
+            Dictionary(
+                grouping: dateData,
+                by: { $0.actualDate }
+            )
+        }
 
 
     
@@ -72,13 +78,7 @@ struct DayView: View {
     VStack {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         ScrollView {
-            HStack {
-             
-                Text(dateData[0].specificContent[0].name)
-                        .multilineTextAlignment(.leading)
-                
-                Spacer()
-            }
+            Text(dateData[0].specificContent[0].name)
         }.frame(width:400, height:700)
           Button("Close") {
             self.presentationMode.wrappedValue.dismiss()
