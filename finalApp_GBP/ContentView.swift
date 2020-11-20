@@ -64,14 +64,6 @@ struct DayView: View {
     formatter.dateStyle = .short
     return formatter
   }
-    
-    var categories: [String: [DateModel]] {
-            Dictionary(
-                grouping: dateData,
-                by: { $0.actualDate }
-            )
-        }
-
 
     
   var body: some View {
@@ -79,6 +71,7 @@ struct DayView: View {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         ScrollView {
             Text(dateData[0].specificContent[0].name)
+            dayView(items: dateData[0].specificContent)
         }.frame(width:400, height:700)
           Button("Close") {
             self.presentationMode.wrappedValue.dismiss()

@@ -9,15 +9,16 @@ import SwiftUI
 
 struct dayView: View {
 
-    var items: [DateModel]
+    var items: [SpecificContent]
     
     
     var body: some View {
         VStack(alignment: .leading) {
 
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 0) {
-                    Text(" ")
+                VStack{
+                    Text("\(items[0].startTime) \(" - ") \(items[0].endTime) ")
+                    Text(items[0].description ?? "")
                 }
             }
             .frame(height: 185)
@@ -25,14 +26,3 @@ struct dayView: View {
     }
 }
 
-struct eventView: View {
-    var dateContent: SpecificContent
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(dateContent.name)
-                .foregroundColor(.primary)
-                .font(.caption)
-        }
-        .padding(.leading, 15)
-    }
-}
