@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct DateModel: Codable{
-    var dateContent: [DateContent]
-}
-
-struct DateContent: Codable {
     var actualDate: String
     var specificContent: [SpecificContent]
 }

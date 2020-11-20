@@ -65,8 +65,12 @@ struct DayView: View {
     return formatter
   }
     
-    //this will check and see if anything has been assigned to a certain date and then return the data
-    //and display it
+    var categories: [String: [DateModel]] {
+            Dictionary(
+                grouping: dateData,
+                by: { $0.category.rawValue }
+            )
+        }
 
     
   var body: some View {
@@ -74,6 +78,15 @@ struct DayView: View {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         ScrollView {
             HStack {
+                List {
+                    
+                    ForEach(categories.keys.sorted(), id: \.self) { key in
+                        dayView(categoryName: key, items: self.categories[key]!)
+                    }
+                    .listRowInsets(EdgeInsets())
+                    
+
+                }
                 Text("")
                         .multilineTextAlignment(.leading)
                 
