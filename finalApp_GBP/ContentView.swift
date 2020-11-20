@@ -26,21 +26,27 @@ private func readLocalFile(forName name: String) -> Data? {
     return nil
 }
 
-private func parse(jsonData: Data, date: String) -> DateContent {
+private func parse(jsonData: Data, date: String) -> String {
     do {
         let dateStuff = try JSONDecoder().decode(DateModel.self,
                                                    from: jsonData)
+        var thisString = ""
         for item in dateStuff.dateContent {
             if item.actualDate == date
             {
-                return item
+
+                 for theData in item.specificContent
+                 {
+                    thisString += " \(theData.name) \("\n      ") \(theData.startTime) \(" - ") \(theData.endTime) \("\n      ") \(theData.description ?? "") \("\n---------------------------------------\n") "
+                    
+                 }
             }
         }
+        return thisString
     } catch {
         print("decode error")
     }
-    let blankContent: DateContent
-    return blankContent
+    return ""
 }
 
 private func loadJson(fromURLString urlString: String,
@@ -121,28 +127,16 @@ struct DayView: View {
     
     //this will check and see if anything has been assigned to a certain date and then return the data
     //and display it
-    var getContentOfDate: DateContent {
-        if let localData = readLocalFile(forName: "dateData") {
-            return parse(jsonData: localData, date: self.dateFormatter.string(from: self.date))
-        }
-        let blankContent: DateContent
-    return blankContent
-    }
+
     
   var body: some View {
     VStack {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         ScrollView {
             HStack {
-                VStack {
-                //This is what isn't working right now
-                    ForEach(self.getContentOfDate, id: \.self) { stuff in
-                        VStack{
-                            Text(stuff.name)
-                            Text("\(stuff.startTime) \(" - ") \(stuff.endTime)")
-                            Text(stuff.description)
-                        }
-                    }
+                if let localData = readLocalFile(forName: "dateData") {
+                    Text( parse(jsonData: localData, date: self.dateFormatter.string(from: self.date)))
+                        .multilineTextAlignment(.leading)
                 }
                 Spacer()
             }
