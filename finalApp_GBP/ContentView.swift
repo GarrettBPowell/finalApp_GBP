@@ -81,7 +81,7 @@ struct DayView: View {
                 List {
                     
                     ForEach(categories.keys.sorted(), id: \.self) { key in
-                        dayView(categoryName: key, items: self.categories[key]!)
+                        dayView(items: self.categories[key]!)
                     }
                     .listRowInsets(EdgeInsets())
                     
