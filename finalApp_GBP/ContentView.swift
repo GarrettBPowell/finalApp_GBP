@@ -9,68 +9,8 @@ import SwiftUI
 import UIKit
 import CoreLocation
 
-//
-//JSON READING STUFF
-//
-private func readLocalFile(forName name: String) -> Data? {
-    do {
-        if let bundlePath = Bundle.main.path(forResource: name,
-                                             ofType: "json"),
-            let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-            return jsonData
-        }
-    } catch {
-        print(error)
-    }
-    
-    return nil
-}
 
-private func parse(jsonData: Data, date: String) -> String {
-    do {
-        let dateStuff = try JSONDecoder().decode(DateModel.self,
-                                                   from: jsonData)
-        var thisString = ""
-        for item in dateStuff.dateContent {
-            if item.actualDate == date
-            {
-
-                 for theData in item.specificContent
-                 {
-                    thisString += " \(theData.name) \("\n      ") \(theData.startTime) \(" - ") \(theData.endTime) \("\n      ") \(theData.description ?? "") \("\n---------------------------------------\n") "
-                    
-                 }
-            }
-        }
-        return thisString
-    } catch {
-        print("decode error")
-    }
-    return ""
-}
-
-private func loadJson(fromURLString urlString: String,
-                      completion: @escaping (Result<Data, Error>) -> Void) {
-    if let url = URL(string: urlString) {
-        let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-            }
-            
-            if let data = data {
-                completion(.success(data))
-            }
-        }
-        
-        urlSession.resume()
-    }
-}
-//
-//
-//
-
-
-//darte formatters
+//date formatters
 fileprivate extension DateFormatter {
     static var month: DateFormatter {
         let formatter = DateFormatter()
@@ -134,10 +74,9 @@ struct DayView: View {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         ScrollView {
             HStack {
-                if let localData = readLocalFile(forName: "dateData") {
-                    Text( parse(jsonData: localData, date: self.dateFormatter.string(from: self.date)))
+                Text("")
                         .multilineTextAlignment(.leading)
-                }
+                
                 Spacer()
             }
         }.frame(width:400, height:700)
@@ -242,6 +181,7 @@ struct MonthView<DateView>: View where DateView: View {
 //CALENDAR VIEW
 struct CalendarView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
+    
 
     let interval: DateInterval
     let content: (Date) -> DateView
@@ -273,14 +213,12 @@ struct CalendarView<DateView>: View where DateView: View {
     }
 }
 
-
+let dateData: DateModel = load("dateData.json")
 struct RootView: View {
     @Environment(\.calendar) var calendar
     @State var showingDayView = false
     @State var components = DateComponents()
     @State var desiredDate = Date()
-
-    
    
     
     private var year: DateInterval {
@@ -295,7 +233,7 @@ struct RootView: View {
         ZStack{
             Color.black
                 .edgesIgnoringSafeArea(.all)
-            NavigationView {
+                        NavigationView {
                 VStack {
                 CalendarView(interval: year) { date in
                     //keeps size the same

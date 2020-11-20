@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DateModel: Codable {
+struct DateModel: Codable{
     var dateContent: [DateContent]
 }
 
