@@ -65,12 +65,7 @@ struct DayView: View {
     return formatter
   }
     
-    var categories: [String: [DateModel]] {
-            Dictionary(
-                grouping: dateData,
-                by: { $0.category.rawValue }
-            )
-        }
+
 
     
   var body: some View {
@@ -78,16 +73,8 @@ struct DayView: View {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         ScrollView {
             HStack {
-                List {
-                    
-                    ForEach(categories.keys.sorted(), id: \.self) { key in
-                        dayView(items: self.categories[key]!)
-                    }
-                    .listRowInsets(EdgeInsets())
-                    
-
-                }
-                Text("")
+             
+                Text(dateData[0].specificContent[0].name)
                         .multilineTextAlignment(.leading)
                 
                 Spacer()
@@ -226,7 +213,7 @@ struct CalendarView<DateView>: View where DateView: View {
     }
 }
 
-let dateData: DateModel = load("dateData.json")
+let dateData: [DateModel] = load("dateData.json")
 struct RootView: View {
     @Environment(\.calendar) var calendar
     @State var showingDayView = false
