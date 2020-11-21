@@ -18,13 +18,13 @@ struct dayView: View {
         
             List(0..<5) { item in
                 VStack{
-                    Text(items[0].name).font(.title2)
+                    Text(items[item].name).font(.title2)
                     Spacer()
                     HStack{
-                        Text("\(items[0].startTime) \(" - ") \(items[0].endTime) ")
+                        Text("\(items[item].startTime) \(" - ") \(items[item].endTime) ")
                     
                    Spacer()
-                    Text(items[0].description ?? "")
+                    Text(items[item].description ?? "")
                     }
                 }
             }

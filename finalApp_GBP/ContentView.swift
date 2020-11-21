@@ -52,10 +52,21 @@ fileprivate extension Calendar {
     }
 }
 
+func matchDate(dateString: String) -> DateModel?
+{
+    for item in dateData
+    {
+        if(item.actualDate == dateString) {
+            return item
+        }
+    }
+}
+
 //DAY VIEW
 struct DayView: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-  
+
+    
   var date: Date
     
   var dateFormatter: DateFormatter {
@@ -65,13 +76,13 @@ struct DayView: View {
     return formatter
   }
 
-    
+    //need to pass day View the date cooresponding to the one clicked
   var body: some View {
     VStack {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         
         ScrollView {
-            dayView(items: dateData[0].specificContent)
+            dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent))
         }
         Button("Close") {
             self.presentationMode.wrappedValue.dismiss()
@@ -206,6 +217,7 @@ struct CalendarView<DateView>: View where DateView: View {
 }
 
 let dateData: [DateModel] = load("dateData.json")
+
 struct RootView: View {
     @Environment(\.calendar) var calendar
     @State var showingDayView = false
