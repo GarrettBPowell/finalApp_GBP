@@ -30,28 +30,36 @@ struct addDate: View {
             Color.black
                 .ignoresSafeArea()
             VStack{
+                RootView(outside: false).frame(height:350)
+                Spacer()
                 HStack{
                     Text("Event Name: ")
                         .foregroundColor(.white)
                     TextField("Event Name: ", text: $name)
                         .foregroundColor(.white)
+                        .border(Color.gray)
                 }
+                Spacer()
                 HStack{
                     Text("Start Time: ")
                         .foregroundColor(.white)
                     TextField("Start Time: ", text: $start)
                         .foregroundColor(Color.white)
+                        .border(Color.gray)
                     Spacer()
                     Text("End Time: ")
                         .foregroundColor(.white)
                     TextField("End Time: ", text: $end)
                         .foregroundColor(Color.white)
+                        .border(Color.gray)
                 }
+                Spacer()
                 HStack{
                     Text("Event Description: ")
                         .foregroundColor(.white)
                     TextField("Event Description: ", text: $descrip)
                         .foregroundColor(Color.white)
+                        .border(Color.gray)
                 }
                 Spacer()
                 

@@ -255,6 +255,7 @@ func updateDateData ()
 struct RootView: View {
     @Environment(\.calendar) var calendar
     @State var showingDayView = false
+    @State var outside = true
     @State var components = DateComponents()
     @State var desiredDate = Date()
     
@@ -287,7 +288,8 @@ struct RootView: View {
                   Text(String(self.calendar.component(.day, from: date)))
                     .foregroundColor(Color.white)
                 }.onTapGesture {
-                        self.showingDayView.toggle()
+                    if(outside){
+                        self.showingDayView.toggle()}
                         
                     self.components.month = self.calendar.component(.month, from: date)
                     self.components.day = self.calendar.component(.day, from: date)
