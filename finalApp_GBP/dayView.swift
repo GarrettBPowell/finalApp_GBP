@@ -10,7 +10,7 @@ import SwiftUI
 struct dayView: View {
 
     var items: [SpecificContent]
-    
+    var theDate: String
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -38,6 +38,8 @@ struct dayView: View {
             Spacer()
             Spacer()
             Spacer()
+           
+
         }
     }
 }

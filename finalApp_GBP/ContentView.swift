@@ -83,7 +83,7 @@ struct DayView: View {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         
         ScrollView {
-            dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent))
+            dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent), theDate: self.dateFormatter.string(from: self.date))
         }
         Button("Close") {
             self.presentationMode.wrappedValue.dismiss()
@@ -254,36 +254,49 @@ struct RootView: View {
     }
     
     var body: some View {
-        ZStack{
+        ZStack
+        {
             Color.black
-                .edgesIgnoringSafeArea(.all)
-                        NavigationView {
-                VStack {
+                .ignoresSafeArea()
+            VStack
+            {
+                Spacer()
+                NavigationView {
+                    ZStack{
+                        Color.black
+                        NavigationLink(destination: addDate()) {
+                            Text("Do Something")
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                        }
+                    }
+                }.frame(width:.infinity, height: 200) .background(Color.black)
+                
                 CalendarView(interval: year) { date in
-                    //keeps size the same
-                    Text("30")
-                        .hidden()
-                        .padding(8)
-                        .background(getColor(date: "\(self.calendar.component(.month, from: date))\("/")\(self.calendar.component(.day, from: date))\("/")\(self.calendar.component(.year, from: date)%100)" ))
-                        .clipShape(Circle())
-                        .padding(.vertical, 4)
-                        
-                        .overlay(
-                        VStack{
-                          Text(String(self.calendar.component(.day, from: date)))
-                            .foregroundColor(Color.white)
-                        }.onTapGesture {
-                                self.showingDayView.toggle()
-                                
-                            self.components.month = self.calendar.component(.month, from: date)
-                            self.components.day = self.calendar.component(.day, from: date)
-                            self.components.year = self.calendar.component(.year, from: date)
-                         
-                            }.sheet(isPresented: self.$showingDayView) {
-                              DayView(date: self.calendar.date(from: self.components) ?? Date())
-                            }
-                    )}
-                }
+                //keeps size the same
+                Text("30")
+                    .hidden()
+                    .padding(8)
+                    .background(getColor(date: "\(self.calendar.component(.month, from: date))\("/")\(self.calendar.component(.day, from: date))\("/")\(self.calendar.component(.year, from: date)%100)" ))
+                    .clipShape(Circle())
+                    .padding(.vertical, 4)
+                    
+                    .overlay(
+                    VStack
+                    {
+                      Text(String(self.calendar.component(.day, from: date)))
+                        .foregroundColor(Color.white)
+                    }.onTapGesture {
+                            self.showingDayView.toggle()
+                            
+                        self.components.month = self.calendar.component(.month, from: date)
+                        self.components.day = self.calendar.component(.day, from: date)
+                        self.components.year = self.calendar.component(.year, from: date)
+                     
+                        }.sheet(isPresented: self.$showingDayView) {
+                          DayView(date: self.calendar.date(from: self.components) ?? Date())
+                        }
+                )}
             }
         }
     }
