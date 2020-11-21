@@ -19,10 +19,10 @@ func addDateToJson(currentDate: String, eventName: String, startTime: String, en
 
 //view for adding new events
 struct addDate: View {
-    @State public var name: String = "Event Name: "
-    @State private var start: String = "Start Time: "
-    @State private var end: String = "End Time: "
-    @State private var descrip: String = "Description: "
+    @State public var name: String = ""
+    @State private var start: String = ""
+    @State private var end: String = ""
+    @State private var descrip: String = ""
     @State private var addedDate: Bool = false;
     let dateClicked: String
     var body: some View {
@@ -31,21 +31,35 @@ struct addDate: View {
                 .ignoresSafeArea()
             VStack{
                 HStack{
-                    TextField("Event Title: ", text: $name)
+                    Text("Event Name: ")
+                        .foregroundColor(.white)
+                    TextField("Event Name: ", text: $name)
                         .foregroundColor(.white)
                 }
                 HStack{
+                    Text("Start Time: ")
+                        .foregroundColor(.white)
                     TextField("Start Time: ", text: $start)
                         .foregroundColor(Color.white)
+                    Spacer()
+                    Text("End Time: ")
+                        .foregroundColor(.white)
                     TextField("End Time: ", text: $end)
                         .foregroundColor(Color.white)
                 }
-                TextField("Event Description: ", text: $descrip)
-                    .foregroundColor(Color.white)
+                HStack{
+                    Text("Event Description: ")
+                        .foregroundColor(.white)
+                    TextField("Event Description: ", text: $descrip)
+                        .foregroundColor(Color.white)
+                }
                 Spacer()
+                
                 Button(action: {
-                    addDateToJson(currentDate: dateClicked, eventName: name, startTime: start, endTime: end, description: descrip)
-                    addedDate = true
+                    if(name != "" && start != "" && end != "" && descrip != ""){
+                        addDateToJson(currentDate: dateClicked, eventName: name, startTime: start, endTime: end, description: descrip)
+                        addedDate = true
+                    }
                 }) {
                     switch(!addedDate){
                         case true: Text("Add Event")
