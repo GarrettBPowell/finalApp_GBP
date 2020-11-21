@@ -10,6 +10,7 @@ func addDateToJson(currentDate: String, eventName: String, startTime: String, en
     let sc = [SpecificContent(name: eventName, startTime: startTime, endTime: endTime, description: description)]
     let dateContent = DateModel(actualDate: eventName, specificContent: sc)
     
+    print(" in add date")
 
     append(filename: "dateData.json", dateAdd: currentDate, contentToAdd: dateContent)
 }
@@ -39,6 +40,7 @@ struct addDate: View {
                 Spacer()
                 Button(action: {
                     addDateToJson(currentDate: dateClicked, eventName: name, startTime: start, endTime: end, description: descrip)
+                    
                 }) {
                     Text("Add Event")
                 }

@@ -34,9 +34,10 @@ func load<T: Decodable>(_ filename: String) -> T {
     }
 }
 
+//should append new data to local json file
 func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
     var dateData: [DateModel] = load("dateData.json")
-    
+    print("got here")
     //checking to see if date exits already
     let indexOfThing: Int = dateData.firstIndex(where: {$0.actualDate == dateAdd}) ?? 0
     if indexOfThing == 0 {
@@ -54,6 +55,9 @@ func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
                 fatalError("Couldn't find \(filename) in main bundle.")
         }
     try JSONEncoder().encode(dateData).write(to: file)
+        print(file)
+        print(dateData)
+
     }catch {
         print(error)}
 }

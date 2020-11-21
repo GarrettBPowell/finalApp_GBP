@@ -67,7 +67,7 @@ func matchDate(dateString: String) -> DateModel
 struct DayView: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    
+
   var date: Date
     
   var dateFormatter: DateFormatter {
@@ -94,6 +94,7 @@ struct DayView: View {
             }
         }
         Button("Close") {
+            print("day view")
             self.presentationMode.wrappedValue.dismiss()
         }
     }
