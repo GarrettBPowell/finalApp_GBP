@@ -225,7 +225,7 @@ struct CalendarView<DateView>: View where DateView: View {
     }
 }
 
-let dateData: [DateModel] = load("dateData.json")
+
 
 func getColor(date: String) -> Color {
     
@@ -247,6 +247,11 @@ func getColor(date: String) -> Color {
     return .blue
 }
 
+var dateData: [DateModel] = load("dateData.json")
+func updateDateData ()
+{
+    dateData = load("dateData.json")
+}
 struct RootView: View {
     @Environment(\.calendar) var calendar
     @State var showingDayView = false

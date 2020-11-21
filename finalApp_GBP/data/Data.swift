@@ -55,8 +55,11 @@ func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
                 fatalError("Couldn't find \(filename) in main bundle.")
         }
         print("inside do, above encoder")
-    try JSONEncoder().encode(dateData).write(to: file)
+        try JSONEncoder().encode(dateData).write(to: file)
+        updateDateData()
         print(dateData)
+        print(file)
+        
 
     }catch {
         print(error)}

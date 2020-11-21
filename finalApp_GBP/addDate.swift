@@ -23,6 +23,7 @@ struct addDate: View {
     @State private var start: String = "Start Time: "
     @State private var end: String = "End Time: "
     @State private var descrip: String = "Description: "
+    @State private var addedDate: Bool = false;
     let dateClicked: String
     var body: some View {
         ZStack{
@@ -44,10 +45,13 @@ struct addDate: View {
                 Spacer()
                 Button(action: {
                     addDateToJson(currentDate: dateClicked, eventName: name, startTime: start, endTime: end, description: descrip)
-                    
+                    addedDate = true
                 }) {
-                    Text("Add Event")
-                }
+                    switch(!addedDate){
+                        case true: Text("Add Event")
+                        case false: Text("Event Added")
+                    }
+                }.disabled(addedDate)
             }
             .padding()
         }
