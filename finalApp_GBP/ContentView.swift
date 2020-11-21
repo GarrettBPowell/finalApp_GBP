@@ -219,6 +219,26 @@ struct CalendarView<DateView>: View where DateView: View {
 
 let dateData: [DateModel] = load("dateData.json")
 
+func getColor(date: String) -> Color {
+    for item in dateData {
+        print(date)
+        if(item.actualDate == date){
+            switch(item.specificContent.count)
+            {
+            case 0: return .blue
+            case 1: return .yellow
+            case 2: return .yellow
+            case 3: return .yellow
+            case 4: return .purple
+            case 5: return .purple
+            default: return .red
+            }
+            
+        }
+    }
+    return .blue
+}
+
 struct RootView: View {
     @Environment(\.calendar) var calendar
     @State var showingDayView = false
@@ -245,7 +265,7 @@ struct RootView: View {
                     Text("30")
                         .hidden()
                         .padding(8)
-                        .background(Color.blue)
+                        .background(getColor(date: "\(self.calendar.component(.month, from: date))\("/")\(self.calendar.component(.day, from: date))\("/")\(self.calendar.component(.year, from: date)%100)" ))
                         .clipShape(Circle())
                         .padding(.vertical, 4)
                         
