@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct addDate: View {
+    @State public var name: String = "Event Name: "
+    @State private var start: String = "Start Time: "
+    @State private var end: String = "End Time: "
+    @State private var descrip: String = "Description: "
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Color.black
+                .ignoresSafeArea()
+            VStack{
+                HStack{
+                    TextField("Event Title: ", text: $name)
+                        .foregroundColor(.white)
+                }
+                HStack{
+                    TextField("Start Time: ", text: $start)
+                        .foregroundColor(Color.white)
+                    TextField("End Time: ", text: $end)
+                        .foregroundColor(Color.white)
+                }
+                TextField("Event Description: ", text: $descrip)
+                    .foregroundColor(Color.white)
+                Spacer()    
+            }
+            .padding()
+        }
+        
     }
+   
 }
 
 struct addDate_Previews: PreviewProvider {

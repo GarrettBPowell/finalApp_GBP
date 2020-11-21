@@ -81,9 +81,17 @@ struct DayView: View {
   var body: some View {
     VStack {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
-        
-        ScrollView {
-            dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent), theDate: self.dateFormatter.string(from: self.date))
+        NavigationView{
+            VStack{
+                ScrollView {
+                    dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent), theDate: self.dateFormatter.string(from: self.date))
+                }
+                Spacer()
+                NavigationLink(destination: addDate()) {
+                    Text("Add Event")
+                        .foregroundColor(.black)
+                }
+            }
         }
         Button("Close") {
             self.presentationMode.wrappedValue.dismiss()
@@ -227,7 +235,7 @@ func getColor(date: String) -> Color {
             case 0: return .blue
             case 1: return .yellow
             case 2: return .yellow
-            case 3: return .yellow
+            case 3: return .orange
             case 4: return .purple
             case 5: return .purple
             default: return .red
@@ -243,6 +251,7 @@ struct RootView: View {
     @State var showingDayView = false
     @State var components = DateComponents()
     @State var desiredDate = Date()
+    
    
     
     private var year: DateInterval {
@@ -252,52 +261,36 @@ struct RootView: View {
     private var month: DateInterval {
         calendar.dateInterval(of: .day, for: Date())!
     }
-    
     var body: some View {
         ZStack
         {
             Color.black
                 .ignoresSafeArea()
-            VStack
-            {
-                Spacer()
-                NavigationView {
-                    ZStack{
-                        Color.black
-                        NavigationLink(destination: addDate()) {
-                            Text("Do Something")
-                                .foregroundColor(.white)
-                                .background(Color.black)
-                        }
-                    }
-                }.frame(width:.infinity, height: 200) .background(Color.black)
+            CalendarView(interval: year) { date in
+            //keeps size the same
+            Text("30")
+                .hidden()
+                .padding(8)
+                .background(getColor(date: "\(self.calendar.component(.month, from: date))\("/")\(self.calendar.component(.day, from: date))\("/")\(self.calendar.component(.year, from: date)%100)" ))
+                .clipShape(Circle())
+                .padding(.vertical, 4)
                 
-                CalendarView(interval: year) { date in
-                //keeps size the same
-                Text("30")
-                    .hidden()
-                    .padding(8)
-                    .background(getColor(date: "\(self.calendar.component(.month, from: date))\("/")\(self.calendar.component(.day, from: date))\("/")\(self.calendar.component(.year, from: date)%100)" ))
-                    .clipShape(Circle())
-                    .padding(.vertical, 4)
-                    
-                    .overlay(
-                    VStack
-                    {
-                      Text(String(self.calendar.component(.day, from: date)))
-                        .foregroundColor(Color.white)
-                    }.onTapGesture {
-                            self.showingDayView.toggle()
-                            
-                        self.components.month = self.calendar.component(.month, from: date)
-                        self.components.day = self.calendar.component(.day, from: date)
-                        self.components.year = self.calendar.component(.year, from: date)
-                     
-                        }.sheet(isPresented: self.$showingDayView) {
-                          DayView(date: self.calendar.date(from: self.components) ?? Date())
-                        }
-                )}
-            }
+                .overlay(
+                VStack
+                {
+                  Text(String(self.calendar.component(.day, from: date)))
+                    .foregroundColor(Color.white)
+                }.onTapGesture {
+                        self.showingDayView.toggle()
+                        
+                    self.components.month = self.calendar.component(.month, from: date)
+                    self.components.day = self.calendar.component(.day, from: date)
+                    self.components.year = self.calendar.component(.year, from: date)
+                 
+                    }.sheet(isPresented: self.$showingDayView) {
+                      DayView(date: self.calendar.date(from: self.components) ?? Date())
+                    }
+            )}
         }
     }
 }
