@@ -52,15 +52,16 @@ fileprivate extension Calendar {
     }
 }
 
-//func matchDate(dateString: String) -> DateModel?
-//{
-//    for item in dateData
-//    {
-//        if(item.actualDate == dateString) {
-//            return item
-//        }
-//    }
-//}
+func matchDate(dateString: String) -> DateModel?
+{
+    for item in dateData
+    {
+        if(item.actualDate == dateString) {
+            return item
+        }
+    }
+    return nil
+}
 
 //DAY VIEW
 struct DayView: View {
@@ -82,7 +83,7 @@ struct DayView: View {
         Text(self.dateFormatter.string(from: self.date)).font(.title).padding()
         
         ScrollView {
-            dayView(items: dateData[0].specificContent)
+            dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent))
         }
         Button("Close") {
             self.presentationMode.wrappedValue.dismiss()
