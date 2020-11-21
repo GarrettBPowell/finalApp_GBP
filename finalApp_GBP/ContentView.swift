@@ -94,7 +94,6 @@ struct DayView: View {
             }
         }
         Button("Close") {
-            print("day view")
             self.presentationMode.wrappedValue.dismiss()
         }
     }
@@ -229,6 +228,7 @@ struct CalendarView<DateView>: View where DateView: View {
 let dateData: [DateModel] = load("dateData.json")
 
 func getColor(date: String) -> Color {
+    
     for item in dateData {
         if(item.actualDate == date){
             switch(item.specificContent.count)
