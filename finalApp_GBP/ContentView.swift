@@ -221,7 +221,6 @@ let dateData: [DateModel] = load("dateData.json")
 
 func getColor(date: String) -> Color {
     for item in dateData {
-        print(date)
         if(item.actualDate == date){
             switch(item.specificContent.count)
             {
