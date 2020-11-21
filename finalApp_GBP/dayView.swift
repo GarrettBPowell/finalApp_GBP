@@ -16,7 +16,7 @@ struct dayView: View {
         VStack(alignment: .leading) {
 
         
-            List(0..<5) { item in
+            List(0..<items.count) { item in
                 VStack{
                     Text(items[item].name).font(.title2)
                     Spacer()
