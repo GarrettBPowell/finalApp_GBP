@@ -1,5 +1,13 @@
 [
-
+    {
+        "actualDate": "*/*/**",
+        "specificContent": [{
+            "name": "",
+            "startTime": "",
+            "endTime": "",
+            "description": ""
+        }]
+    },
     {
         "actualDate": "1/1/20",
         "specificContent": [{
@@ -22,18 +30,6 @@
             },
             {
                 "name": "Exciting Thing",
-                "startTime": "7:30",
-                "endTime": "9:20",
-                "description": "it's exciting"
-            },
-            {
-                "name": "Exciting Thing",
-                "startTime": "7:30",
-                "endTime": "9:20",
-                "description": "it's exciting"
-            },
-            {
-                "name": "Its diff I just copied",
                 "startTime": "7:30",
                 "endTime": "9:20",
                 "description": "it's exciting"

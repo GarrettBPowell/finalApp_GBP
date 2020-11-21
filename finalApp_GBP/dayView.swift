@@ -18,13 +18,19 @@ struct dayView: View {
         
             List(0..<items.count) { item in
                 VStack{
-                    Text(items[item].name).font(.title2)
+                    HStack {
+                        Text(items[item].name)
+                            .font(.title2)
+                            
+                        Spacer()
+                    }
                     Spacer()
-                    HStack{
+                    HStack (alignment: .top){
                         Text("\(items[item].startTime) \(" - ") \(items[item].endTime) ")
                     
-                   Spacer()
-                    Text(items[item].description ?? "")
+                        Spacer()
+                        
+                        Text(items[item].description ?? "")
                     }
                 }
             }
@@ -32,7 +38,6 @@ struct dayView: View {
             Spacer()
             Spacer()
             Spacer()
-            Text("Hopefully have time density graph here or a button to get to it")
         }
     }
 }

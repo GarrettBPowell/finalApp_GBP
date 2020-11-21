@@ -52,7 +52,7 @@ fileprivate extension Calendar {
     }
 }
 
-func matchDate(dateString: String) -> DateModel?
+func matchDate(dateString: String) -> DateModel
 {
     for item in dateData
     {
@@ -60,7 +60,7 @@ func matchDate(dateString: String) -> DateModel?
             return item
         }
     }
-    return nil
+    return dateData[0]
 }
 
 //DAY VIEW
