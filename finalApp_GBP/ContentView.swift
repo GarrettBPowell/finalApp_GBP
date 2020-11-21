@@ -87,7 +87,7 @@ struct DayView: View {
                     dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent), theDate: self.dateFormatter.string(from: self.date))
                 }
                 Spacer()
-                NavigationLink(destination: addDate()) {
+                NavigationLink(destination: addDate(dateClicked: self.dateFormatter.string(from: self.date))) {
                     Text("Add Event")
                         .foregroundColor(.black)
                 }

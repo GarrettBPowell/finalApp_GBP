@@ -12,7 +12,6 @@ import UIKit
 import CoreLocation
 
 
-
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
     
@@ -33,4 +32,28 @@ func load<T: Decodable>(_ filename: String) -> T {
     } catch {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
+}
+
+func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
+    var dateData: [DateModel] = load("dateData.json")
+    
+    //checking to see if date exits already
+    let indexOfThing: Int = dateData.firstIndex(where: {$0.actualDate == dateAdd}) ?? 0
+    if indexOfThing == 0 {
+        dateData.append(contentToAdd)
+    }
+    else {
+        dateData[indexOfThing].specificContent.append(contentsOf: contentToAdd.specificContent)
+    }
+    //at this point array should be updated and the file just needs to be written to
+
+//trying to add to file
+    do{
+        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+            else {
+                fatalError("Couldn't find \(filename) in main bundle.")
+        }
+    try JSONEncoder().encode(dateData).write(to: file)
+    }catch {
+        print(error)}
 }
