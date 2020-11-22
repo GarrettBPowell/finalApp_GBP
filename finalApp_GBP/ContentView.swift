@@ -89,7 +89,7 @@ struct DayView: View {
                 Spacer()
                 NavigationLink(destination: addDate(dateClicked: self.dateFormatter.string(from: self.date))) {
                     Text("Add Event")
-                        .foregroundColor(.black)
+                        .foregroundColor(.blue)
                 }
             }
         }

@@ -68,6 +68,7 @@ struct addDate: View {
                         addDateToJson(currentDate: dateClicked, eventName: name, startTime: start, endTime: end, description: descrip)
                         addedDate = true
                     }
+                    
                 }) {
                     switch(!addedDate){
                         case true: Text("Add Event")

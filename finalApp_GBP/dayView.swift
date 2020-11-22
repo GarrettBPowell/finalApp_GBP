@@ -39,7 +39,7 @@ struct dayView: View {
             Spacer()
             Spacer()
            
-
+            Busy(busy: items)
         }
     }
 }
