@@ -23,7 +23,12 @@ func getHour(hour: String) -> Int
     case " 09 ": return 9;
     case " 10 ": return 10;
     case " 11 ": return 11;
-    case " 12 ": return 12;
+    case " 12 ":
+        if(isAM(ap: hour))
+        {
+            return 0;
+        }
+        return 12;
     default: return 0;
     }
 }
