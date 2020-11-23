@@ -18,6 +18,7 @@
 		46719570255D815200781856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4671956F255D815200781856 /* Assets.xcassets */; };
 		46719573255D815200781856 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46719572255D815200781856 /* Preview Assets.xcassets */; };
 		4671957E255D815300781856 /* finalApp_GBPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671957D255D815300781856 /* finalApp_GBPTests.swift */; };
+		469CB1F2256C75B3008F1080 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469CB1F1256C75B3008F1080 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		4671957D255D815300781856 /* finalApp_GBPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalApp_GBPTests.swift; sourceTree = "<group>"; };
 		4671957F255D815300781856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46719584255D815300781856 /* finalApp_GBPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = finalApp_GBPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		469CB1F1256C75B3008F1080 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				4671956F255D815200781856 /* Assets.xcassets */,
 				46719574255D815200781856 /* Info.plist */,
 				46719571255D815200781856 /* Preview Content */,
+				469CB1F1256C75B3008F1080 /* LaunchScreen.storyboard */,
 			);
 			path = finalApp_GBP;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46719573255D815200781856 /* Preview Assets.xcassets in Resources */,
+				469CB1F2256C75B3008F1080 /* LaunchScreen.storyboard in Resources */,
 				46719570255D815200781856 /* Assets.xcassets in Resources */,
 				4626E79E2566B8030003D869 /* dateData.json in Resources */,
 			);

@@ -6,6 +6,27 @@
 //
 
 import SwiftUI
+func getHour(hour: String) -> Int
+{
+    let firstHalf = hour.firstIndex(of: ":")!
+    return (Int(hour[...firstHalf]) ?? 0)
+}
+
+func getMin(min: String) -> Int
+{
+    var secHalf = min.firstIndex(of: ":")!
+    let end = min.index(secHalf, offsetBy: 3)
+    secHalf = min.index(secHalf, offsetBy: 1)
+    return (Int(min[secHalf...end]) ?? 0)
+}
+
+func isAM(ap: String) -> Bool{
+    let time = ap.firstIndex(of: "a")!
+    if(ap[time...] == "am") {
+        return true
+    }
+    return false
+}
 
 func calcTime(array: [SpecificContent]) -> Int{
     var time: Int = 0
