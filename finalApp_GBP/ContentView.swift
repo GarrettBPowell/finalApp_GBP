@@ -179,7 +179,6 @@ struct MonthView<DateView>: View where DateView: View {
         VStack {
             if showHeader {
                 header
-                    .foregroundColor(Color.white)
             }
 
             ForEach(weeks, id: \.self) { week in
@@ -212,8 +211,6 @@ struct CalendarView<DateView>: View where DateView: View {
 
     var body: some View {
         ZStack{
-            Color.black
-                .edgesIgnoringSafeArea(.all)
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     ForEach(months, id: \.self) { month in
@@ -271,8 +268,6 @@ struct RootView: View {
     var body: some View {
         ZStack
         {
-            Color.black
-                .ignoresSafeArea()
             CalendarView(interval: year) { date in
             //keeps size the same
             Text("30")
