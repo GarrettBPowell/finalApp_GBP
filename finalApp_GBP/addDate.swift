@@ -27,9 +27,9 @@ struct addDate: View {
     @State private var startAP = 0
     @State private var endHours = 0
     @State private var endMin = 0
-    @State private var endAP = 1
-    @State private var hours = ["01", "02", "03", "04", "05", "06", "07", "08" ,"09", "10", "11", "12"]
-    @State private var min = ["01", "02", "03", "04", "05", "06", "07", "08" ,"09", "10", "11", "12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]
+    @State private var endAP = 0
+    @State private var hours = ["12", "01", "02", "03", "04", "05", "06", "07", "08" ,"09", "10", "11"]
+    @State private var min = ["00", "01", "02", "03", "04", "05", "06", "07", "08" ,"09", "10", "11", "12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
     @State private var times = ["am", "pm"]
     let dateClicked: String
     
@@ -66,7 +66,7 @@ struct addDate: View {
                     
                     //start am pm
                     VStack{
-                        Picker(selection: $startAP, label: Text("Zeige Deteils")) {
+                        Picker(selection: $startAP, label: Text("AmPm")) {
                             Text("am").tag(0)
                             Text("pm").tag(1)
                         }.frame(width:50)
@@ -100,7 +100,7 @@ struct addDate: View {
                     
                     //end am pm
                     VStack{
-                        Picker(selection: $endAP, label: Text("Zeige Deteils")) {
+                        Picker(selection: $endAP, label: Text("AmPm")) {
                             Text("am").tag(0)
                             Text("pm").tag(1)
                         }.frame(width:50)
