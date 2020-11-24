@@ -234,8 +234,8 @@ func getColor(date: String) -> Color {
             case 1: return .yellow
             case 2: return .yellow
             case 3: return .orange
-            case 4: return .purple
-            case 5: return .purple
+            case 4: return .orange
+            case 5: return .orange
             default: return .red
             }
             
