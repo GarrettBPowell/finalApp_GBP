@@ -38,7 +38,8 @@ struct dayView: View {
                                 Spacer()
 
                                     Button(action: {
-                                            delete(filename: "dateData.json", dateDelete: theDate, contentToDelete: model.specificContent[item] ) })
+                                            delete(filename: "dateData.json", dateDelete: theDate, contentToDelete: model.specificContent[item])
+                                    })
                                     {
                                         Text("X").foregroundColor(Color.red)
                                             .font(Font.subheadline.weight(.bold))
