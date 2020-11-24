@@ -11,6 +11,32 @@ import SwiftUI
 import UIKit
 import CoreLocation
 
+func delete (filename: String, dateDelete: String, contentToDelete: SpecificContent) {
+    var dateData: [DateModel] = load("dateData.json")
+    //checking to see if date exits already
+    let indexOfThing: Int = dateData.firstIndex(where: {$0.actualDate == dateDelete}) ?? 0
+    var countThing: Int = 0
+    
+    for item in dateData[indexOfThing].specificContent {
+        
+        if(item.name == contentToDelete.name && item.description == contentToDelete.description
+            && item.startTime == contentToDelete.startTime && item.endTime == contentToDelete.endTime) {
+            
+            dateData[indexOfThing].specificContent.remove(at: countThing)
+        }
+            countThing += 1
+    }
+    
+    do{
+        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+            else {
+                fatalError("Couldn't find \(filename) in main bundle.")
+        }
+        try JSONEncoder().encode(dateData).write(to: file)
+        updateDateData()
+    }catch {
+        print(error)}
+}
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
@@ -37,7 +63,6 @@ func load<T: Decodable>(_ filename: String) -> T {
 //should append new data to local json file
 func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
     var dateData: [DateModel] = load("dateData.json")
-    print("got here")
     //checking to see if date exits already
     let indexOfThing: Int = dateData.firstIndex(where: {$0.actualDate == dateAdd}) ?? 0
     if indexOfThing == 0 {
@@ -54,11 +79,8 @@ func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
             else {
                 fatalError("Couldn't find \(filename) in main bundle.")
         }
-        print("inside do, above encoder")
         try JSONEncoder().encode(dateData).write(to: file)
         updateDateData()
-        print(dateData)
-        print(file)
         
 
     }catch {

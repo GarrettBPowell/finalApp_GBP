@@ -84,7 +84,7 @@ struct DayView: View {
         NavigationView{
             VStack{
                 ScrollView {
-                    dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent), theDate: self.dateFormatter.string(from: self.date))
+                    dayView(items: (matchDate(dateString: self.dateFormatter.string(from: self.date)).specificContent), model: (matchDate(dateString: self.dateFormatter.string(from: self.date))), theDate: self.dateFormatter.string(from: self.date))
                 }
                 Spacer()
                 NavigationLink(destination: addDate(dateClicked: self.dateFormatter.string(from: self.date))) {
