@@ -9,26 +9,26 @@ func getHour(hour: String) -> Int
     }
     var firstHalf = hour.firstIndex(of: ":")!
     firstHalf = hour.index(firstHalf, offsetBy: -1)
-    print(hour[...firstHalf])
+
     switch(hour[...firstHalf])
     {
-    case " 01 ": return 1;
-    case " 02 ": return 2;
-    case " 03 ": return 3;
-    case " 04 ": return 4;
-    case " 05 ": return 5;
-    case " 06 ": return 6;
-    case " 07 ": return 7;
-    case " 08 ": return 8;
-    case " 09 ": return 9;
-    case " 10 ": return 10;
-    case " 11 ": return 11;
-    case " 12 ":
+    case "01": return 1;
+    case "02": return 2;
+    case "03": return 3;
+    case "04": return 4;
+    case "05": return 5;
+    case "06": return 6;
+    case "07": return 7;
+    case "08": return 8;
+    case "09": return 9;
+    case "10": return 10;
+    case "11": return 11;
+    case "12":
         if(isAM(ap: hour))
         {
             return 0;
         }
-        return 12;
+        return 0;
     default: return 0;
     }
 }
@@ -57,7 +57,6 @@ func isAM(ap: String) -> Bool{
     if(ap.count <= 0){
         return true
     }
-    print(ap.contains("am"))
     return ap.contains("am")
 }
 
@@ -78,8 +77,6 @@ func calcTime(array: [SpecificContent]) -> Int{
             }
         }
     }
-    
-    
     return time
 }
 
@@ -88,6 +85,6 @@ struct Busy: View {
 
     
     var body: some View {
-        Text(" \("Estimated Time Taken Up Today: ") \(calcTime(array: busy)) \(" Hours")")
+        Text(" \("Estimated Time Taken Up Today: ") \(calcTime(array: busy)) \(" Hour(s)")")
     }
 }

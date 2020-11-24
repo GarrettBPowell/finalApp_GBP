@@ -26,7 +26,7 @@ struct dayView: View {
                     }
                     Spacer()
                     HStack (alignment: .top){
-                        Text("\(items[item].startTime) \(" - ") \(items[item].endTime) ")
+                        Text("\(items[item].startTime) \("-") \(items[item].endTime) ")
                     
                         Spacer()
                         
@@ -39,7 +39,7 @@ struct dayView: View {
             Spacer()
             Spacer()
            
-            Busy(busy: items)
+            Busy(busy: items).padding()
         }
     }
 }

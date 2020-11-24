@@ -117,7 +117,7 @@ struct addDate: View {
 
                 Button(action: {
                     if(name != "" && descrip != ""){
-                        addDateToJson(currentDate: dateClicked, eventName: name, startTime: String(" \(hours[startHours]) \(":") \(min[startMin]) \(" ") \(times[startAP])"), endTime: String(" \(hours[endHours]) \(":") \(min[endMin]) \(" ") \(times[endAP])"), description: descrip)
+                        addDateToJson(currentDate: dateClicked, eventName: name, startTime: String("\(hours[startHours])\(":")\(min[startMin]) \(times[startAP])"), endTime: String("\(hours[endHours])\(":")\(min[endMin]) \(times[endAP])"), description: descrip)
                         addedDate = true
                     }
                     
