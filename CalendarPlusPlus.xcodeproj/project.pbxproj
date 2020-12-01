@@ -45,16 +45,16 @@
 		46290CE92568779A00942B90 /* dayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dayView.swift; sourceTree = "<group>"; };
 		46290CF12568A64300942B90 /* addDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDate.swift; sourceTree = "<group>"; };
 		4634ACC92569DF9F000F82B7 /* busy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = busy.swift; sourceTree = "<group>"; };
-		46719568255D814F00781856 /* finalApp_GBP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalApp_GBP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46719568255D814F00781856 /* CalendarPlusPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarPlusPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4671956B255D814F00781856 /* finalApp_GBPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalApp_GBPApp.swift; sourceTree = "<group>"; };
 		4671956D255D814F00781856 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4671956F255D815200781856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46719572255D815200781856 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46719574255D815200781856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46719579255D815300781856 /* finalApp_GBPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = finalApp_GBPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46719579255D815300781856 /* CalendarPlusPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarPlusPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4671957D255D815300781856 /* finalApp_GBPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalApp_GBPTests.swift; sourceTree = "<group>"; };
 		4671957F255D815300781856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46719584255D815300781856 /* finalApp_GBPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = finalApp_GBPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46719584255D815300781856 /* CalendarPlusPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarPlusPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		469CB1F1256C75B3008F1080 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,9 +105,9 @@
 		46719569255D814F00781856 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				46719568255D814F00781856 /* finalApp_GBP.app */,
-				46719579255D815300781856 /* finalApp_GBPTests.xctest */,
-				46719584255D815300781856 /* finalApp_GBPUITests.xctest */,
+				46719568255D814F00781856 /* CalendarPlusPlus.app */,
+				46719579255D815300781856 /* CalendarPlusPlusTests.xctest */,
+				46719584255D815300781856 /* CalendarPlusPlusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,9 +149,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		46719567255D814F00781856 /* finalApp_GBP */ = {
+		46719567255D814F00781856 /* CalendarPlusPlus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4671958D255D815300781856 /* Build configuration list for PBXNativeTarget "finalApp_GBP" */;
+			buildConfigurationList = 4671958D255D815300781856 /* Build configuration list for PBXNativeTarget "CalendarPlusPlus" */;
 			buildPhases = (
 				46719564255D814F00781856 /* Sources */,
 				46719565255D814F00781856 /* Frameworks */,
@@ -161,14 +161,14 @@
 			);
 			dependencies = (
 			);
-			name = finalApp_GBP;
+			name = CalendarPlusPlus;
 			productName = finalApp_GBP;
-			productReference = 46719568255D814F00781856 /* finalApp_GBP.app */;
+			productReference = 46719568255D814F00781856 /* CalendarPlusPlus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		46719578255D815300781856 /* finalApp_GBPTests */ = {
+		46719578255D815300781856 /* CalendarPlusPlusTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 46719590255D815300781856 /* Build configuration list for PBXNativeTarget "finalApp_GBPTests" */;
+			buildConfigurationList = 46719590255D815300781856 /* Build configuration list for PBXNativeTarget "CalendarPlusPlusTests" */;
 			buildPhases = (
 				46719575255D815300781856 /* Sources */,
 				46719576255D815300781856 /* Frameworks */,
@@ -179,14 +179,14 @@
 			dependencies = (
 				4671957B255D815300781856 /* PBXTargetDependency */,
 			);
-			name = finalApp_GBPTests;
+			name = CalendarPlusPlusTests;
 			productName = finalApp_GBPTests;
-			productReference = 46719579255D815300781856 /* finalApp_GBPTests.xctest */;
+			productReference = 46719579255D815300781856 /* CalendarPlusPlusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		46719583255D815300781856 /* finalApp_GBPUITests */ = {
+		46719583255D815300781856 /* CalendarPlusPlusUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 46719593255D815300781856 /* Build configuration list for PBXNativeTarget "finalApp_GBPUITests" */;
+			buildConfigurationList = 46719593255D815300781856 /* Build configuration list for PBXNativeTarget "CalendarPlusPlusUITests" */;
 			buildPhases = (
 				46719580255D815300781856 /* Sources */,
 				46719581255D815300781856 /* Frameworks */,
@@ -197,9 +197,9 @@
 			dependencies = (
 				46719586255D815300781856 /* PBXTargetDependency */,
 			);
-			name = finalApp_GBPUITests;
+			name = CalendarPlusPlusUITests;
 			productName = finalApp_GBPUITests;
-			productReference = 46719584255D815300781856 /* finalApp_GBPUITests.xctest */;
+			productReference = 46719584255D815300781856 /* CalendarPlusPlusUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -224,7 +224,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 46719563255D814F00781856 /* Build configuration list for PBXProject "finalApp_GBP" */;
+			buildConfigurationList = 46719563255D814F00781856 /* Build configuration list for PBXProject "CalendarPlusPlus" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -237,9 +237,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				46719567255D814F00781856 /* finalApp_GBP */,
-				46719578255D815300781856 /* finalApp_GBPTests */,
-				46719583255D815300781856 /* finalApp_GBPUITests */,
+				46719567255D814F00781856 /* CalendarPlusPlus */,
+				46719578255D815300781856 /* CalendarPlusPlusTests */,
+				46719583255D815300781856 /* CalendarPlusPlusUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -307,12 +307,12 @@
 /* Begin PBXTargetDependency section */
 		4671957B255D815300781856 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 46719567255D814F00781856 /* finalApp_GBP */;
+			target = 46719567255D814F00781856 /* CalendarPlusPlus */;
 			targetProxy = 4671957A255D815300781856 /* PBXContainerItemProxy */;
 		};
 		46719586255D815300781856 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 46719567255D814F00781856 /* finalApp_GBP */;
+			target = 46719567255D814F00781856 /* CalendarPlusPlus */;
 			targetProxy = 46719585255D815300781856 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -439,8 +439,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"finalApp_GBP/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = finalApp_GBP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -448,8 +449,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "gbp.finalApp-GBP";
+				PRODUCT_BUNDLE_IDENTIFIER = "garettbpowell-gmail.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "/Users/rachelpuckett/Downloads/Garrett_Powell (1).mobileprovision";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -460,8 +462,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"finalApp_GBP/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = finalApp_GBP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -469,8 +472,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "gbp.finalApp-GBP";
+				PRODUCT_BUNDLE_IDENTIFIER = "garettbpowell-gmail.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "/Users/rachelpuckett/Downloads/Garrett_Powell (1).mobileprovision";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -493,7 +497,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/finalApp_GBP.app/finalApp_GBP";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarPlusPlus.app/CalendarPlusPlus";
 			};
 			name = Debug;
 		};
@@ -514,7 +518,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/finalApp_GBP.app/finalApp_GBP";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarPlusPlus.app/CalendarPlusPlus";
 			};
 			name = Release;
 		};
@@ -559,7 +563,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		46719563255D814F00781856 /* Build configuration list for PBXProject "finalApp_GBP" */ = {
+		46719563255D814F00781856 /* Build configuration list for PBXProject "CalendarPlusPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4671958B255D815300781856 /* Debug */,
@@ -568,7 +572,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4671958D255D815300781856 /* Build configuration list for PBXNativeTarget "finalApp_GBP" */ = {
+		4671958D255D815300781856 /* Build configuration list for PBXNativeTarget "CalendarPlusPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4671958E255D815300781856 /* Debug */,
@@ -577,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		46719590255D815300781856 /* Build configuration list for PBXNativeTarget "finalApp_GBPTests" */ = {
+		46719590255D815300781856 /* Build configuration list for PBXNativeTarget "CalendarPlusPlusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46719591255D815300781856 /* Debug */,
@@ -586,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		46719593255D815300781856 /* Build configuration list for PBXNativeTarget "finalApp_GBPUITests" */ = {
+		46719593255D815300781856 /* Build configuration list for PBXNativeTarget "CalendarPlusPlusUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46719594255D815300781856 /* Debug */,
