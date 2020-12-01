@@ -244,10 +244,18 @@ func getColor(date: String) -> Color {
     return .blue
 }
 
-var dateData: [DateModel] = load("dateData.json")
+var dateData: [DateModel] = load()
+
+func checker() {
+    print("\n")
+    print(dateData[0].actualDate)
+    print("\n)")
+}
+
 func updateDateData ()
 {
-    dateData = load("dateData.json")
+    dateData = load()
+    checker()
 }
 struct RootView: View {
     @Environment(\.calendar) var calendar
@@ -255,8 +263,8 @@ struct RootView: View {
     @State var outside = true
     @State var components = DateComponents()
     @State var desiredDate = Date()
-   
-    
+
+
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: Date())!
     }

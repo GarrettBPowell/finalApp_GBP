@@ -11,12 +11,34 @@ import SwiftUI
 import UIKit
 import CoreLocation
 
+func baseThing() {
+    let url = getDocumentsDirectory().appendingPathComponent("message.txt")
+    let str = "[{\"actualDate\": \"*/*/**\",\"specificContent\": [{\"name\": \"\",\"startTime\": \"\",\"endTime\":\"\",\"description\": \"\"}]}]"
+
+
+            do {
+                try str.write(to: url, atomically: true, encoding: .utf8)
+                let input = try String(contentsOf: url)
+                print(input)
+            } catch {
+                print(error.localizedDescription)
+            }
+}
+
+func getDocumentsDirectory() -> URL {
+    // find all possible documents directories for this user
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+    // just send back the first one, which ought to be the only one
+    return paths[0]
+}
+
+
 func delete (filename: String, dateDelete: String, contentToDelete: SpecificContent) {
-    var dateData: [DateModel] = load("dateData.json")
+    var dateData: [DateModel] = load()
     //checking to see if date exits already
     let indexOfThing: Int = dateData.firstIndex(where: {$0.actualDate == dateDelete}) ?? 0
     var countThing: Int = 0
-    
     for item in dateData[indexOfThing].specificContent {
         
         if(item.name == contentToDelete.name && item.description == contentToDelete.description
@@ -27,42 +49,47 @@ func delete (filename: String, dateDelete: String, contentToDelete: SpecificCont
             countThing += 1
     }
     
-    do{
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-            else {
-                fatalError("Couldn't find \(filename) in main bundle.")
+        do {
+            let url = getDocumentsDirectory().appendingPathComponent("message.txt")
+
+            try JSONEncoder().encode(dateData).write(to: url)
+            let input = try String(contentsOf: url)
+            print(input)
+        } catch {
+            print(error.localizedDescription)
         }
-        try JSONEncoder().encode(dateData).write(to: file)
         updateDateData()
-    }catch {
-        print(error)}
 }
 
-func load<T: Decodable>(_ filename: String) -> T {
+var didOnce = true
+func load<T: Decodable>() -> T {
     let data: Data
     
-    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-        else {
-            fatalError("Couldn't find \(filename) in main bundle.")
+    let file = getDocumentsDirectory().appendingPathComponent("message.txt")
+    if(didOnce) {
+        didOnce = false
+        baseThing()
     }
-    
     do {
         data = try Data(contentsOf: file)
     } catch {
-        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+        fatalError("Couldn't load from main bundle:\n\(error)")
     }
-    
+    print("Done")
     do {
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     } catch {
-        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+        fatalError("Couldn't parse as \(T.self):\n\(error)")
     }
+    
 }
+
+
 
 //should append new data to local json file
 func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
-    var dateData: [DateModel] = load("dateData.json")
+    var dateData: [DateModel] = load()
     //checking to see if date exits already
     let indexOfThing: Int = dateData.firstIndex(where: {$0.actualDate == dateAdd}) ?? 0
     if indexOfThing == 0 {
@@ -75,14 +102,17 @@ func append (filename: String, dateAdd: String, contentToAdd: DateModel) {
 
 //trying to add to file
     do{
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-            else {
-                fatalError("Couldn't find \(filename) in main bundle.")
+        let url = getDocumentsDirectory().appendingPathComponent("message.txt")
+
+        do {
+            try JSONEncoder().encode(dateData).write(to: url)
+            let input = try String(contentsOf: url)
+            print(input)
+        } catch {
+            print(error.localizedDescription)
         }
-        try JSONEncoder().encode(dateData).write(to: file)
         updateDateData()
         
 
-    }catch {
-        print(error)}
+    }
 }
