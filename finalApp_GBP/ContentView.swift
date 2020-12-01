@@ -255,7 +255,6 @@ struct RootView: View {
     @State var outside = true
     @State var components = DateComponents()
     @State var desiredDate = Date()
-    
    
     
     private var year: DateInterval {
