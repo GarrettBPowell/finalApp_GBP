@@ -11,8 +11,6 @@ import SwiftUI
 func addDateToJson(currentDate: String, eventName: String, startTime: String, endTime: String, description: String?){
     let sc = [SpecificContent(name: eventName, startTime: startTime, endTime: endTime, description: description)]
     let dateContent = DateModel(actualDate: currentDate, specificContent: sc)
-    
-    print("in add date")
 
     append(filename: "dateData.json", dateAdd: currentDate, contentToAdd: dateContent)
 }
